@@ -8,11 +8,6 @@
 import numpy as np
 import pandas as pd
 
-# for visualization
-get_ipython().run_line_magic('matplotlib', 'inline')
-import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import axes3d
-
 
 # In[ ]:
 
@@ -112,30 +107,6 @@ def svm_prediction(w, test_data):
 # In[ ]:
 
 
-def svm_visualization(train_data, test_data, prediction):
-    x_train = train_data[:,0]
-    y_train = train_data[:,1]
-    z_train = train_data[:,2]
-    target_train = train_data[:,-1]
-    x_test = test_data[:,0]
-    y_test = test_data[:,1]
-    z_test = test_data[:,2]
-    target_test = test_data[:,-1]
-    
-    fig = plt.figure()
-    ax = fig.gca(projection='3d')    
-    ax.plot(x_train[target_train=='setosa'], y_train[target_train=='setosa'], z_train[target_train=='setosa'], c = 'red')
-    ax.plot(x_train[target_train=='versicolor'], y_train[target_train=='versicolor'], z_train[target_train=='versicolor'], c = 'blue')
-    ax.plot(x_train[target_train=='virginica'], y_train[target_train=='virginica'], z_train[target_train=='virginica'], c = 'green')
-    ax.plot(x_test[target_test=='setosa'], y_test[target_test=='setosa'], z_test[target_test=='setosa'],  c = 'magenta')
-    ax.plot(x_test[target_test=='versicolor'], y_test[target_test=='versicolor'], z_test[target_test=='versicolor'], c = 'cyan')
-    ax.plot(x_test[target_test=='virginica'], y_test[target_test=='virginica'], z_test[target_test=='virginica'], c = 'yellow')
-    plt.show()
-
-
-# In[ ]:
-
-
 train_data, test_data = data_preprocessing(iris)
 print(test_data[:, -1])
 
@@ -151,12 +122,6 @@ w = svm_fitting(train_data)
 
 prediction = svm_prediction(w, test_data)
 print(prediction)
-
-
-# In[ ]:
-
-
-svm_visualization(train_data, test_data, prediction)
 
 
 # In[ ]:
